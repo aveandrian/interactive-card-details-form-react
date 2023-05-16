@@ -33,4 +33,4 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![image](https://github.com/aveandrian/interactive-card-details-form-react/assets/13519212/ca9bb35f-3039-44ee-8223-0af31fd91153)

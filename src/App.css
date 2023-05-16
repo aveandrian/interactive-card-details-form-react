@@ -1,0 +1,275 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.125rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+  background-image: url('/images/bg-main-desktop.png');
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3.125rem;
+  margin-bottom: 1.25rem;
+}
+
+.images-container {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.front-img-container {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 470px;
+  position: relative;
+  right: 30%;
+}
+
+.front-content, .back-content {
+  display: flex;
+  flex-direction: column;
+  padding: 1.375rem;
+}
+
+.front-img, .back-img {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.card-logo {
+  width: 20%;
+  margin-bottom: 5rem;
+}
+
+.card-front-text {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.img-card-number {
+  font-size: 1.388rem;
+  letter-spacing: 0.2em;
+}
+
+.card-front-name-date {
+  display: flex;
+}
+
+.img-card-name {
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
+.back-img-container {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 470px;
+  position: relative;
+}
+
+.back-content {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 12%;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  z-index: 2;
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+
+.name-input-container,.number-input-container, .date-input-contaier, .cvv-input-contaier  {
+  display: flex;
+  flex-direction: column;
+  gap: 0.313rem;
+}
+
+.date-cvv-input-container {
+  display: flex;
+  gap: 1.25rem
+}
+
+.date-inputs {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.date-inputs > input {
+ width: 80px;
+}
+
+
+input {
+  height: 2.5rem;
+  text-indent: 0.625rem;
+  border-radius: 0.313rem;
+  border: solid 0.063rem  hsl(270, 3%, 87%);
+}
+
+
+input::placeholder {
+  font-size: 0.9rem;
+}
+
+input:focus {
+  border: solid 1px linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+}
+
+.error {
+  color: red;
+  font-size: 0.75rem;
+}
+
+.input-error {
+  border: solid 0.063rem red;
+}
+
+.form-btn {
+  height: 3.125rem;
+  width: 100%;
+  border-radius: 0.313rem;
+  color: white;
+  background-color: black;
+}
+
+.form-btn:hover {
+  cursor: pointer;
+}
+
+.complete-container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  z-index: 3;
+}
+
+.complete-img {
+  width: 20%;
+  margin-bottom: 1.25rem;
+}
+
+.complete-title {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.complete-text {
+  color: hsl(279, 6%, 55%);
+  margin-bottom: 2.5rem;
+}
+
+footer, footer > a {
+  align-self: center;
+  text-align: center;
+  font-size: 0.6rem;
+}
+
+@media screen and (max-width: 1050px) {
+  body {
+    background-image: url('/images/bg-main-mobile.png');
+    background-size: contain;
+  }
+
+  #root {
+    width: 100%;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    width: 100%;
+  }
+  .images-container {
+    width: 100%;
+    height: 170px;
+    position: relative;
+    gap: 0;
+  }
+
+  .card-logo {
+    margin-bottom: 2.5rem;
+  }
+
+  .front-img-container, .back-img-container {
+    position: absolute;
+    z-index: 1;
+    top:0;
+    right:0;
+    width: 90%;
+    height: 100%;
+  }
+
+  .front-img-container{
+    z-index: 2;
+    top: 5.5rem;
+    left: 0;
+  }
+
+  input, .card-front-name-date,  .img-card-name, .img-card-exp-m, .img-card-exp-y, .img-card-cvv {
+    font-size: 0.8rem;
+  }
+
+  .img-card-number {
+    font-size: 0.9rem;
+  }
+
+  form {
+    width: 100%;
+    margin-top: 20%;
+  }
+
+  .date-cvv-input-container {
+    width: 100%;
+    gap: 0.625rem;
+  }
+  .date-input-contaier {
+    width: 50%;
+  }
+
+  .cvv-input-contaier {
+    width: 50%;
+  }
+
+  .complete-container {
+    width: 100%;
+    margin-top: 20%;
+  }
+}

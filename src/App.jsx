@@ -49,6 +49,13 @@ function App() {
 
   function handleSubmit(e){
     e.preventDefault()
+    setErrors({
+      name: null,
+      cardNumber : null,
+      expM : null,
+      expY : null,
+      cvv : null
+    })
     let isValid = true
     Object.keys(formData).forEach(key => {
       if(!formData[key]){
@@ -66,8 +73,29 @@ function App() {
       setErrors(prevErrors => ({...prevErrors, cardNumber: "Wrong format, numbers only"}))
       isValid = false
     }
-    if(formData.expM < 0 || formData.expM > 12){
+    if(formData.expM < 0 || formData.expM > 12 || formData.expM.replace(/\s/g, '').match(/\D/g)){
       setErrors(prevErrors => ({...prevErrors, expM: "Wrong month"}))
+      isValid = false
+    }
+
+
+    if(formData.expY.replace(/\s/g, '').match(/\D/g) || formData.expY < (new Date().getUTCFullYear() % 1000)){
+      setErrors(prevErrors => ({...prevErrors, expY: "Wrong year format"}))
+      isValid = false
+    }
+
+    if(formData.expY < (new Date().getUTCFullYear() % 1000)){
+      setErrors(prevErrors => ({...prevErrors, expY: "Expiration year can only be in the future"}))
+      isValid = false
+    }
+    
+    if(formData.expM-1 < (new Date().getUTCMonth()) && formData.expY <= (new Date().getUTCFullYear() % 1000)){
+      setErrors(prevErrors => ({...prevErrors, expM: "Expiration date can only be in the future"}))
+      isValid = false
+    }
+
+    if(formData.cvv.replace(/\s/g, '').match(/\D/g)){
+      setErrors(prevErrors => ({...prevErrors, cvv: "Wrong format, numbers only"}))
       isValid = false
     }
 
@@ -174,7 +202,7 @@ function App() {
         <button className='form-btn'>Confirm</button>
       </form>}
     </main>
-    <footer class="attribution">
+    <footer className="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="https://github.com/aveandrian">aveandrian</a>.
   </footer>

@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 
-function Success(){
+function Success(props){
   return (
     <div className='complete-container'>
       <img src='/images/icon-complete.svg' className='complete-img'alt='Complete Icon'/>
       <h1 className='complete-title'>Thank you!</h1>
       <p className='complete-text'>We've added your card details</p>
-      <button className='form-btn'>Continue</button>
+      <button className='form-btn' onClick={props.onClick}>Continue</button>
     </div>
   )
 }
@@ -106,6 +106,10 @@ function App() {
     
   }
 
+  function restart(){
+    location.reload()
+  }
+
   return (
     <>
     <main>
@@ -131,7 +135,7 @@ function App() {
           </div>
         </div>
       </div>
-      {isSuccess ? <Success /> : <form name='card-details-form' onSubmit={handleSubmit}>
+      {isSuccess ? <Success onClick={restart} /> : <form name='card-details-form' onSubmit={handleSubmit}>
         <div className='name-input-container'>
           <label htmlFor='name'>Cardholder name</label>
           <input 
